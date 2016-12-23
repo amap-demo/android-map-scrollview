@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">scrollview</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="first">Hello  fragment</string>
+    <string name="two">Hello fragment two</string>
+</resources>
