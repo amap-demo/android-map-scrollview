@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">scrollview</string>
+    <string name="app_name">滑屏与滑动地图手势区分示例</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="first">Hello  fragment</string>
