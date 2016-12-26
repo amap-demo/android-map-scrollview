@@ -2,6 +2,7 @@
     <string name="app_name">滑屏与滑动地图手势区分示例</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="first">Hello  fragment</string>
-    <string name="two">Hello fragment two</string>
+    <string name="first">Tab1内容展示</string>
+    <string name="two">Tab2内容展示</string>
+    <string name="action_contact">Contact</string>
 </resources>
