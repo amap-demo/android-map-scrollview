@@ -17,8 +17,12 @@ public class MainActivity extends AppCompatActivity{
     ScrollViewPager mViewPager;
     List<String> mTitleList = new ArrayList<String>();
     List<Fragment> mFragments = new ArrayList<Fragment>();
+
+    //推荐使用TextureSupportMapFragment 解决滑动黑边问题
     TextureSupportMapFragment mMapFragment;
-    PagerSlidingTabStrip tabs;
+
+    //使用开源Tab github 开源地址 https://github.com/astuetz/PagerSlidingTabStrip
+    PagerSlidingTabStrip mTabs;
 
 
     @Override
@@ -27,13 +31,16 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
         mViewPager = (ScrollViewPager) findViewById(R.id.view_page);
 
+        //三个Tab
         mTitleList.add("Tab1");
         mTitleList.add("地图");
         mTitleList.add("Tab2");
 
+        //Tab1
         TestFragment testOne = new TestFragment();
         mFragments.add(testOne);
 
+        //Tab 地图
         try {
             MapsInitializer.initialize(this.getApplicationContext());  //初始化TextureSupportMapFragment需要先设置context
         } catch (RemoteException e) {
@@ -42,32 +49,42 @@ public class MainActivity extends AppCompatActivity{
         mMapFragment = TextureSupportMapFragment.newInstance();
         mFragments.add(mMapFragment);
 
+        //Tab2
         TestTwoFragment testTwo = new TestTwoFragment();
         mFragments.add(testTwo);
 
-        FragmentPagerAdapter adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                return mFragments.get(position);
-            }
-
-            @Override
-            public int getCount() {
-                return mTitleList.size();
-            }
-
-            @Override
-            public CharSequence getPageTitle(int position) {
-                return mTitleList.get(position);
-            }
-        };
+        //viewPage 设置adapter
         mViewPager.setAdapter(adapter);
+
+        //viewPage设置默认展示Tab
         mViewPager.setCurrentItem(1);
 
-        // Bind the tabs to the ViewPager
-        tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-        tabs.setShouldExpand(true);
-        tabs.setIndicatorColorResource(R.color.colorPrimary);
-        tabs.setViewPager(mViewPager);
+        // 绑定Tab和ViewPage
+        mTabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        mTabs.setViewPager(mViewPager);
+
+        //设置Tab均分整个width
+        mTabs.setShouldExpand(true);
+
+        //设置Tab下滚动条颜色
+        mTabs.setIndicatorColorResource(R.color.colorPrimary);
+
     }
+
+    FragmentPagerAdapter adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+        @Override
+        public Fragment getItem(int position) {
+            return mFragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mTitleList.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mTitleList.get(position);
+        }
+    };
 }
