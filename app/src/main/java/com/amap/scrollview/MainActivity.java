@@ -59,13 +59,12 @@ public class MainActivity extends AppCompatActivity{
         //viewPage设置默认展示Tab
         mViewPager.setCurrentItem(1);
 
-        // 绑定Tab和ViewPage
+        // Tab
         mTabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-        mTabs.setViewPager(mViewPager);
-
         //设置Tab均分整个width
         mTabs.setShouldExpand(true);
-
+        //绑定Tab和ViewPage
+        mTabs.setViewPager(mViewPager);
         //设置Tab下滚动条颜色
         mTabs.setIndicatorColorResource(R.color.colorPrimary);
 
