@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity{
             e.printStackTrace();
         }
         mMapFragment = TextureSupportMapFragment.newInstance();
+
         mFragments.add(mMapFragment);
 
         //Tab2
